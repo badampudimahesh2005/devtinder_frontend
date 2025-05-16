@@ -7,6 +7,9 @@ import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import Feed from './pages/Feed'
+import Settings from './pages/Settings'
+import Profile from './pages/Profile'
+import Error from './pages/Error'
 
 
 const App = () => {
@@ -22,9 +25,11 @@ const App = () => {
          <Route path="/" element={user ? <Feed /> :<Home />} />
           <Route path="/login" element={user ? <Navigate to="/" replace /> : <Login />} />
           <Route path="/signup" element={user ? <Navigate to="/" replace /> : <Signup />} />
-          {/* <Route path="/terms-of-service" element={<TermsOfService />} /> */}
-          {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path='/logout' element={<Navigate to="/login" replace />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path="/settings" element={user ? <Settings /> : <Navigate to="/login" replace />} />
+          <Route path="/error" element={<Error />} />
 
           
           <Route path="*" element={user ?<Feed /> :<Home />} />

@@ -25,7 +25,8 @@ const Body = () => {
       if(error.response?.status === 401) {
         navigate("/login");
       }
-      console.error("Error fetching user data: ", error.message);
+      navigate("/error");
+      console.error("Error fetching user data: ", error.response?.data?.message || error.message);
     }
   }
 
