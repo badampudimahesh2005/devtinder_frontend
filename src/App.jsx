@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import {  useSelector } from 'react-redux'
 
 import Body from './pages/Body'
@@ -20,8 +20,8 @@ const App = () => {
         <Route path='/' element={<Body />} >
 
          <Route path="/" element={user ? <Feed /> :<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={user ? <Navigate to="/" replace /> : <Login />} />
+          <Route path="/signup" element={user ? <Navigate to="/" replace /> : <Signup />} />
           {/* <Route path="/terms-of-service" element={<TermsOfService />} /> */}
           {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}
           <Route path="/contact-us" element={<ContactUs />} />
