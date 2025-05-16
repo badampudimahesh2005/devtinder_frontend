@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/slices/userSlice";
 
 
 const Login = () => {
@@ -9,6 +11,8 @@ const Login = () => {
   const [email, setEmail] = useState("ramu@gmail.com");
   const [password, setPassword] = useState("Mahesh@123");
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+ const dispatch = useDispatch();
 
   const handleLogin = async (e)=>{
     e.preventDefault();
@@ -19,7 +23,8 @@ const Login = () => {
       },{
         withCredentials:true
       });
-      console.log(response.data);
+      console.log(response.data.data);
+      dispatch(setUser(response.data.data));
       // Handle successful login (e.g., store token, redirect, etc.)
 
     }catch(error){
