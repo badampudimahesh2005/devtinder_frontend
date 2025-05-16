@@ -1,9 +1,10 @@
 import { Code } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
 
-   const user = false;
+   const user = useSelector((state) => state.user);
   const location = useLocation();
   const isAuthPath = location.pathname.includes('/login') || location.pathname.includes('/signup');
   return (
@@ -17,6 +18,13 @@ const Navbar = () => {
       {!isAuthPath && (
         user ? (
           <div className="flex gap-2 mr-10">
+
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-gray-300">
+                Hey! {user.firstName}
+              </span>
+            </div>
+
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -25,8 +33,8 @@ const Navbar = () => {
               >
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    alt="user profile"
+                    src={user?.profilePicture }
                   />
                 </div>
               </div>
