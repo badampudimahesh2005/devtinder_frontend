@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { setUser } from "../store/slices/userSlice";
+import useLogin from "../hooks/useLogin";
+import { useNavigate,Link  } from "react-router-dom";
 
 
 const Login = () => {
@@ -12,24 +10,13 @@ const Login = () => {
   const [password, setPassword] = useState("Mahesh@123");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
- const dispatch = useDispatch();
+ const login = useLogin();
+ const navigate = useNavigate();
 
   const handleLogin = async (e)=>{
     e.preventDefault();
-    try{
-      const response = await axios.post("http://localhost:5000/login", {
-        email,
-        password
-      },{
-        withCredentials:true
-      });
-      console.log(response.data.data);
-      dispatch(setUser(response.data.data));
-      // Handle successful login (e.g., store token, redirect, etc.)
-
-    }catch(error){
-      console.log(error);
-    }
+   login(email, password);
+   navigate("/");
 
   }
 
