@@ -17,13 +17,15 @@ const Body = () => {
 
   const fetchUser  = async () => {
     try {
-      const response = await axios.get(BASE_URL + "profile/view", {
+     if(document.cookie) {
+       const response = await axios.get(BASE_URL + "profile/view", {
         withCredentials: true
       });
       dispatch(setUser(response?.data));
+     }
     } catch (error) {
-      if(error.response?.status === 401) {
-        navigate("/login");
+      if(error.status === 401) {
+        return navigate("/login");
       }
       navigate("/error");
       console.error("Error fetching user data: ", error.response?.data?.message || error.message);
