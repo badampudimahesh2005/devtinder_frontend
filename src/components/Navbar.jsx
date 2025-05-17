@@ -17,10 +17,11 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try{
-      await axios.post(BASE_URL + "logout", {
+      await axios.post(BASE_URL + "/logout",{}, {
         withCredentials: true
       });
       dispatch(clearUser());
+      navigate('/login');
     }catch (error) {
     navigate('/error');
     console.error("Error logging out: ", error.response?.data?.message || error.message);
@@ -74,7 +75,7 @@ const Navbar = () => {
                   <Link to="/settings">Settings</Link>
                 </li>
                 <li>
-                  <Link onClick={handleLogout} to="/logout">Logout</Link>
+                  <button onClick={handleLogout} >Logout</button>
                 </li>
               </ul>
             </div>

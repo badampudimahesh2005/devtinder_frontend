@@ -24,13 +24,13 @@ export default function ContactUs() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
+    <div className="min-h-screen bg-base-100 text-gray-100">
       <div className="container mx-auto px-4 py-8">
-        <Link to="/" className="text-blue-600 hover:underline mb-4 inline-block">
+        <Link to="/" className="text-gray-200 hover:underline mb-4 inline-block">
           &larr; Back to Home
         </Link>
         <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
-        <div className="bg-white shadow-md rounded-lg p-6">
+        <div className="bg-base-200 shadow-2xl border border-gray-700 rounded-lg p-6">
           <p className="mb-4">Have a question or feedback? We'd love to hear from you!</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -44,7 +44,7 @@ export default function ContactUs() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full px-3 py-2 border border-gray-500 rounded-md focus:outline-none outline-none"
               />
             </div>
             <div>
@@ -58,7 +58,7 @@ export default function ContactUs() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full px-3 py-2 border border-gray-500 rounded-md focus:outline-none outline-none"
               />
             </div>
             <div>
@@ -72,10 +72,10 @@ export default function ContactUs() {
                 onChange={handleChange}
                 required
                 rows="4"
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full px-3 py-2  border border-gray-500 rounded-md focus:outline-none outline-none "
               ></textarea>
             </div>
-            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+            <button type="submit" className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
               Send Message
             </button>
           </form>
