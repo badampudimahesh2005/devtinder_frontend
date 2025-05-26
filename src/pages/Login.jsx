@@ -35,7 +35,7 @@ const Login = () => {
       onChange={(e)=> setEmail(e.target.value)} 
       placeholder="Enter your email"
       className="w-full p-2 mt-1 border border-gray-500 rounded-md focus:outline-none outline-none "
-      required
+    
       />
     </div>
     <div className="mb-4 relative">
@@ -47,7 +47,7 @@ const Login = () => {
       onChange={(e)=> setPassword(e.target.value)} 
       placeholder="Enter your password"
       className="w-full p-2 mt-1 border border-gray-500 rounded-md focus:outline-none outline-none "
-      required
+     
       />
       <button 
       type="button"

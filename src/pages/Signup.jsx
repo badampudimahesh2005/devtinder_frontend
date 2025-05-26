@@ -13,7 +13,8 @@ const Signup = () => {
     age: "",
     experienceLevel: "",
     location: "",
-    gender: ""
+    gender: "",
+    education:""
   });
   const [lastName, setLastName] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -165,6 +166,19 @@ const Signup = () => {
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
+          </div>
+
+            <div>
+            <label className="block">Education</label>
+            <input
+              type="text"
+              name="education"
+              value={formData.education}
+              onChange={handleChange}
+              className="w-full p-2 mt-1 border border-gray-500 rounded-md focus:outline-none"
+              placeholder="School, College, University, etc."
+              required
+            />
           </div>
 
           {error && <p className="text-red-400 text-sm">{error}</p>}

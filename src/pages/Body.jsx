@@ -29,7 +29,7 @@ const Body = () => {
           navigate('/login');
         } else {
           console.error('Error fetching user data:', error.response?.data?.message || error.message);
-          navigate('/error');
+          // navigate('/error');
         }
       }
     };

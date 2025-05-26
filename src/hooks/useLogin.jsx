@@ -9,6 +9,7 @@ const useLogin = () => {
   
     const login = useCallback(async (email, password, setError) => {
         try {
+            setError(null);
             const response = await axios.post(BASE_URL + "/login", {
                 email,
                 password
