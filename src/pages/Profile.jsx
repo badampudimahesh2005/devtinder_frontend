@@ -8,7 +8,7 @@ const Profile = () => {
   const user = useSelector((store) => store.user);
   const [showFullBio, setShowFullBio] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  
+
   if (user === null) return null;
   const {
     firstName,
@@ -22,6 +22,7 @@ const Profile = () => {
     socialLinks,
     profilePicture,
     education,
+    workExperience,
   } = user;
 
   return (
@@ -45,7 +46,10 @@ const Profile = () => {
             className="w-32 h-32 object-cover rounded-full border-4 border-gray-300"
           />
           <h1 className="mt-4 text-2xl font-bold">{firstName + " " + lastName}</h1>
-          <p className="text-gray-400">{experienceLevel ? experienceLevel?.charAt(0).toUpperCase() + experienceLevel?.slice(1):"complete your profile setup"}</p>
+          <p className="text-gray-400">
+            <strong>Experience:</strong>
+            {experienceLevel ? experienceLevel?.charAt(0).toUpperCase() + experienceLevel?.slice(1) : "Beginner"}
+          </p>
         </div>
 
         {/* Basic Info */}
@@ -57,7 +61,7 @@ const Profile = () => {
             <strong>Location:</strong> {location ? location : "Not specified"}
           </p>
           <p>
-            <strong>Gender:</strong> {gender ? gender?.charAt(0).toUpperCase() + gender?.slice(1):<span className="text-gray-400">Not set</span>}
+            <strong>Gender:</strong> {gender ? gender?.charAt(0).toUpperCase() + gender?.slice(1) : <span className="text-gray-400">Not set</span>}
           </p>
         </div>
 
@@ -118,12 +122,23 @@ const Profile = () => {
           </div>
         )}
 
+        {/* Work Experience Section */}
+        {workExperience && (
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold">Work Experience</h3>
+            <p className="text-gray-400">{workExperience}</p>
+          </div>
+        )}
+
         {/* Social Links */}
         {socialLinks && Object.keys(socialLinks).length > 0 && (
           // checing the socialLinks object to see if it has any keys
           <div className="mt-6">
             <h3 className="text-lg font-semibold py-3">Social Links</h3>
             <div className="flex gap-4">
+              {Object.values(socialLinks).every(link => !link || link === "" || link === " ") && (
+                <p className="text-gray-400">No social links provided</p>
+              )}
               {socialLinks.github && (
                 <a target="_blank"
                   href={socialLinks.github}
@@ -161,7 +176,7 @@ const Profile = () => {
         )}
 
         {/* Edit Profile Modal */}
-        <EditProfile 
+        <EditProfile
           isOpen={isEditModalOpen}
           onClose={() => setIsEditModalOpen(false)}
           user={user}
