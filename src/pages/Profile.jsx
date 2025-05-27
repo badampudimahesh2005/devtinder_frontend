@@ -107,7 +107,7 @@ const Profile = () => {
                   key={index}
                   className="px-3 py-1 bg-gray-600 font-semibold text-gray-200 rounded-lg text-sm select-none"
                 >
-                  {skill}
+                  {skill.charAt(0).toUpperCase() + skill.slice(1)}
                 </span>
               ))}
             </div>

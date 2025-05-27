@@ -7,6 +7,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { setUser } from '../store/slices/userSlice';
 import { BASE_URL } from '../utils/constant';
+import { Toaster } from 'react-hot-toast';
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Body = () => {
 
   return (
     <>
+        <Toaster position="top-center" />
       <Navbar />
       <Outlet />
     </>

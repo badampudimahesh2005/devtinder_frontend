@@ -1,6 +1,8 @@
 import { useState } from "react";
 import useEditProfile from "../../hooks/useEditProfile";
 
+import {toast} from "react-hot-toast";
+
 const EditProfile = ({ isOpen, onClose, user }) => {
   if (!isOpen) return null;
   const {
@@ -15,7 +17,7 @@ const EditProfile = ({ isOpen, onClose, user }) => {
     bio = "",
     socialLinks = {},
     workExperience = "",
-    skills = []
+    skills = [],
   } = user;
 
   const [formData, setFormData] = useState({
@@ -43,6 +45,7 @@ const EditProfile = ({ isOpen, onClose, user }) => {
   const editProfile = useEditProfile();
 
   const handleSubmit = async (e) => {
+    try{
     e.preventDefault();
     // avoid adding empty skills
     const formattedSkills = formData.skills.filter(skill => skill.trim() !== "");
@@ -53,13 +56,17 @@ const EditProfile = ({ isOpen, onClose, user }) => {
     
     editProfile(updatedFormData, setError);
     onClose();
+    toast.success("Profile updated successfully!");
+    } catch(err){
+      toast.error("Failed to update profile. Please try again.");
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     
-    if (name === 'socialLinks') {
-      const socialType = e.target.getAttribute('data-social-type');
+    if (name === "socialLinks") {
+      const socialType = e.target.getAttribute("data-social-type");
       setFormData(prev => ({
         ...prev,
         socialLinks: {
