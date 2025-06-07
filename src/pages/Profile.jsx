@@ -3,6 +3,7 @@ import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import EditProfile from "../components/profile/EditProfile";
+import ProfilePictureUpload from "../components/profile/ProfilePictureUpload";
 
 const Profile = () => {
   const user = useSelector((store) => store.user);
@@ -39,7 +40,7 @@ const Profile = () => {
         </div>
 
         {/* Profile Picture */}
-        <div className="flex flex-col items-center">
+        {/* <div className="flex flex-col items-center">
           <img
             src={profilePicture}
             alt="Profile"
@@ -50,7 +51,9 @@ const Profile = () => {
             <strong>Experience:</strong>
             {experienceLevel ? experienceLevel?.charAt(0).toUpperCase() + experienceLevel?.slice(1) : "Beginner"}
           </p>
-        </div>
+        </div> */}
+
+        <ProfilePictureUpload user={user} />
 
         {/* Basic Info */}
         <div className="mt-6">
