@@ -12,6 +12,7 @@ import Profile from './pages/Profile'
 import Error from './pages/Error'
 import Connections from './pages/Connections'
 import Requests from './pages/Requests'
+import PublicProfile from './components/profile/PublicProfile'
 
 
 const App = () => {
@@ -30,6 +31,8 @@ const App = () => {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path='/logout' element={<Navigate to="/login" replace />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/profile/:id' element={<PublicProfile />} />
+
           <Route path='/connections' element={<Connections />} />
           <Route path='/requests' element={<Requests />} />
 
