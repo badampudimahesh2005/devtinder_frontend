@@ -34,6 +34,9 @@
 - Signup New User 
 - E2E testing
 
+- small improvements
+    - when user send the request , if receiver rejected it then user not able to send the request again, it's says connection already exist
+
 
 Body 
     NavBar
@@ -171,3 +174,4 @@ Body
     - Homework: Limit messages when fetching from DB
     - Project Ideas: Tic tac toe game
     - Project Idea 2 : Chess
+
