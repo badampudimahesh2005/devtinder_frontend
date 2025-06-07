@@ -10,6 +10,7 @@ import Feed from './pages/Feed'
 import Settings from './pages/Settings'
 import Profile from './pages/Profile'
 import Error from './pages/Error'
+import Connections from './pages/Connections'
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path='/logout' element={<Navigate to="/login" replace />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/connections' element={<Connections />} />
           <Route path="/settings" element={user ? <Settings /> : <Navigate to="/login" replace />} />
           <Route path="/error" element={<Error />} />
 
